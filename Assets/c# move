@@ -1,0 +1,36 @@
+using UnityEngine;
+using System.Collections;
+
+public class BoxMove : MonoBehaviour {
+
+	public GameObject player;
+	public float jumpSpeed;
+	public float speed;
+	public float maxSpeed;
+	//private bool isFalling = false;
+
+	// Use this for initialization
+	void Start () {
+	
+	}
+	
+	// Update is called once per frame
+	void FixedUpdate () {
+		if (Input.GetAxis ("Horizontal") > 0 && player.rigidbody2D.velocity.x < maxSpeed) {
+			player.rigidbody2D.AddForce (Vector2.right*speed);
+		}
+		if (Input.GetAxis ("Horizontal") < 0 && player.rigidbody2D.velocity.x < maxSpeed) {
+			player.rigidbody2D.AddForce (Vector2.right*speed*-1);
+		}
+
+		if (Input.GetAxis ("Vertical") > 0 /*&& isFalling == false*/) {
+			player.rigidbody2D.AddForce (Vector2.up*jumpSpeed);
+			//isFalling = true;
+		}
+
+	}
+
+	/*void OnCollisionStay2D (Collision2D collision) {
+		isFalling = false;
+	}*/
+}
